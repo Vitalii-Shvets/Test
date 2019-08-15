@@ -20,7 +20,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">Головна</a>
+        <a class="navbar-brand" href="{{route('posts.index')}}">Головна</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Додати пост
+                    <a class="nav-link" href="{{ route('posts.create') }}" }>Додати пост
                         <span class="sr-only">(current)</span>
                     </a>
                 </li>
@@ -45,25 +45,27 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
             <main>
-
-
+                @yield('content')
             </main>
         </div>
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
-
+            <form method="POST" action="{{ route('posts.search')}}" enctype="multipart/form-data">
+            @csrf
             <!-- Search Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Search</h5>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                <button class="btn btn-secondary" type="button">Go!</button>
+                <div class="card my-4">
+                    <h5 class="card-header">Пошук</h5>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for..." name="search">
+                            <span class="input-group-btn">
+                <button class="btn btn-secondary" type="submit">Go!</button>
               </span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
+
 
         </div>
 

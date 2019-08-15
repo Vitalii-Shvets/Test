@@ -6,6 +6,9 @@
 
 require('./bootstrap');
 
+import AddTagToList from './blogJs/addTagToList';
+const addTagToList = new AddTagToList('#tags','#listTags','#button-addon2');
+
 window.Vue = require('vue');
 
 /**

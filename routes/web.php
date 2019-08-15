@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('posts.index'));
 });
+
+Route::resource('posts', 'PostsController',['only' => [
+    'index', 'create', 'store']])->names('posts');
+
+Route::post('posts/search/', 'PostsController@search')->name('posts.search');
+
